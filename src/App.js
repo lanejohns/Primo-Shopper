@@ -4,7 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 
 import { Container } from 'react-bootstrap'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
   return (
@@ -12,10 +12,8 @@ function App() {
       <Header />
       <main className="py-3">
         <Container>
-          <Routes>
-            <Route path='/' element={<HomeScreen />} exact />
-            <Route path='/product/:id' element={<ProductScreen />} />
-          </Routes>
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/product/:id' component={ProductScreen} />
         </Container>
       </main>
       <Footer />
