@@ -32,7 +32,21 @@ function ProductScreen({ match }) {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={3}></Col>
+
+                <Col md={3}>
+                    <Card>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>Price:</Col>
+                                    <Col>
+                                        <strong>${product.price}</strong>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Card>
+                </Col>
             </Row>
         </div>
     )
