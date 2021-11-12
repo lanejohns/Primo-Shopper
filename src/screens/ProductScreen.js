@@ -9,7 +9,12 @@ function ProductScreen({ match }) {
     const product = products.find((p) => p._id == match.params.id)
     return (
         <div>
-            {product.name}
+            <Link to={"/"} className ="btn btn-light my-3">Go Back</Link>
+            <Row>
+                <Col md={6}>
+                    <Image src={product.image} alt={product.name}/>
+                </Col>
+            </Row>
         </div>
     )
 }
