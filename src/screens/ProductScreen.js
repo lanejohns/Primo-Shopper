@@ -52,6 +52,9 @@ function ProductScreen({ match }) {
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Button variant="primary" type="button">Add To Cart</Button>
+                            </ListGroup.Item>
                         </ListGroup>
                     </Card>
                 </Col>
