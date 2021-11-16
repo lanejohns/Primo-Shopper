@@ -53,7 +53,7 @@ function ProductScreen({ match }) {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button variant="primary" type="button">Add To Cart</Button>
+                                <Button variant="primary" type="button" disabled={product.countInStock == 0}>Add To Cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
