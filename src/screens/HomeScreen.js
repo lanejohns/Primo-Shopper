@@ -4,6 +4,7 @@ import {Row, Col} from 'react-bootstrap'
 
 import { listProducts } from '../actions/productActions'
 import Product from "../components/Product"
+import Loader from "../components/Loader"
 
 function HomeScreen() {
     const dispatch = useDispatch()
@@ -18,7 +19,7 @@ function HomeScreen() {
     return (
         <div>
             <h1>Latest Products</h1>
-            {loading ? <h2>Loading...</h2>
+            {loading ? <Loader/>
                 : error ? <h3>{error}</h3>
                     :
                     <Row>
