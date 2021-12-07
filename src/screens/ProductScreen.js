@@ -3,8 +3,10 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 
-import { listProductDetails, listProducts } from '../actions/productActions'
+import { listProductDetails } from '../actions/productActions'
 import Rating from '../components/Rating'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 function ProductScreen({ match }) {
     
@@ -21,6 +23,11 @@ function ProductScreen({ match }) {
     return (
         <div>
             <Link to={"/"} className ="btn btn-light my-3">Go Back</Link>
+                {loading ?
+                    <Loader/>
+                    : error
+                        ? <Message variant='danger'>{error}</Message>
+                    : (
             <Row>
                 <Col md={6}>
                     <Image src={product.image} alt={product.name}/>
@@ -70,6 +77,10 @@ function ProductScreen({ match }) {
                     </Card>
                 </Col>
             </Row>
+                    )
+                }
+
+            
         </div>
     )
 }
