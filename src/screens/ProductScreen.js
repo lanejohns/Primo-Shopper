@@ -3,19 +3,20 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 
-import { listProductDetails } from '../actions/productActions'
+import { listProductDetails, listProducts } from '../actions/productActions'
 import Rating from '../components/Rating'
 
 function ProductScreen({ match }) {
     
     const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const { loading, error, product } = productDetails
 
     useEffect(() => {
+        dispatch(listProductDetails(match.params.id))
         
-        
-    }, [])
+    }, [dispatch])
 
-    let product = {}
 
     return (
         <div>
