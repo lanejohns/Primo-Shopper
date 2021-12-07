@@ -17,7 +17,7 @@ function ProductScreen({ match }) {
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
         
-    }, [dispatch])
+    }, [dispatch, match])
 
 
     return (
