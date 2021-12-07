@@ -24,7 +24,7 @@ export const productListReducer = (state = {products:[]}, action) => {
     }
 }
 
-export const detailsListReducer = (state = {product:{ eviews:[]} }, action) => {
+export const productDetailsReducer = (state = {product: {reviews:[]} }, action) => {
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
             return {loading:true, ...state}
