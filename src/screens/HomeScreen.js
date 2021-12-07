@@ -5,6 +5,7 @@ import {Row, Col} from 'react-bootstrap'
 import { listProducts } from '../actions/productActions'
 import Product from "../components/Product"
 import Loader from "../components/Loader"
+import Message from "../components/Message"
 
 function HomeScreen() {
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ function HomeScreen() {
         <div>
             <h1>Latest Products</h1>
             {loading ? <Loader/>
-                : error ? <h3>{error}</h3>
+                : error ? <Message variant='danger'>{error}</Message>
                     :
                     <Row>
                     {products.map(product => (
