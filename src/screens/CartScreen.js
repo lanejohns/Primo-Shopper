@@ -26,6 +26,12 @@ function CartScreen({match, location, history}) {
         console.log('remove:', id)
     }
 
+    const checkoutHandler = () => {
+        // this will send the user to the login page if not logged in
+        // otherwise, we redirect to the shipping page
+        history.push('/login?redirect=shipping')
+    }
+
     return (
         <Row>
             <Col md={8}>
@@ -82,8 +88,20 @@ function CartScreen({match, location, history}) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
+                            ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                         </ListGroup.Item>
                     </ListGroup>
+
+                    <ListGroup.Item>
+                        <Button
+                        type='button'
+                        className='btn-block w-100'
+                        disabled={cartItems.length === 0}
+                        onClick={checkoutHandler}
+                        >
+                            Proceed to Checkout
+                        </Button>
+                    </ListGroup.Item>
                 </Card>
             </Col>
         </Row>
