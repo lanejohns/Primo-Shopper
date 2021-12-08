@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import { Message } from '../components/Message'
+import  Message from '../components/Message'
 import { addToCart } from "../actions/cartActions"
 
 
@@ -23,9 +23,21 @@ function CartScreen({match, location, history}) {
     }, [dispatch, productId, qty])
 
     return (
-        <div>
-            Cart
-        </div>
+        <Row>
+            <Col md={8}>
+                <h1>Shopping Cart</h1>
+                {cartItems.length === 0 ? (
+                    <Message variant='info'>
+                        Your cart is empty <Link t0='/'>Go Back</Link>
+                    </Message>
+                ) : (
+                    <ListGroup variant='flush'></ListGroup>
+                )}
+            </Col>
+
+            <Col md={4}>
+            </Col>
+        </Row>
     )
 }
 
