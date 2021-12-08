@@ -22,6 +22,10 @@ function CartScreen({match, location, history}) {
         }
     }, [dispatch, productId, qty])
 
+    const removeFromCartHandler = (id) => {
+        console.log('remove:', id)
+    }
+
     return (
         <Row>
             <Col md={8}>
@@ -38,20 +42,33 @@ function CartScreen({match, location, history}) {
                                     <Col md={2}>
                                         <Image src={item.image} alt={item.name} fluid rounded/>
                                     </Col>
+
                                     <Col md={3}>
                                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                                     </Col>
+
                                     <Col md={2}>
                                         ${item.price}
                                     </Col>
+
                                     <Col md={3}>
-                                        <Form.Select as='select' value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
+                                        <Form.Select as='select' value={item.qty} onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
                                                 {
                                                     [...Array(item.countInStock).keys()].map((x) => (
                                                         <option key={x + 1} value={x + 1}>{x + 1}</option>
                                                     ))
                                                 }
-                                            </Form.Select>
+                                        </Form.Select>
+                                    </Col>
+
+                                    <Col md={1}>
+                                        <Button
+                                        type='button'
+                                        variant='light'
+                                        onClick={() => removeFromCartHandler(item.product)}
+                                        >
+                                            <i className='fas fa-trash'></i>
+                                        </Button>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -61,6 +78,13 @@ function CartScreen({match, location, history}) {
             </Col>
 
             <Col md={4}>
+                <Card>
+                    <ListGroup variant='flush'>
+                        <ListGroup.Item>
+                            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
+                        </ListGroup.Item>
+                    </ListGroup>
+                </Card>
             </Col>
         </Row>
     )
