@@ -31,12 +31,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserSerializerWithToken(UserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = User
         fields = ['id', '_id', 'username', 'email', 'name', 'isAdmin', 'token']
-    
+
     def get_token(self, obj):
-        # As we generate/serialize a user, we take the user obj and return another token with the initial response
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
 
