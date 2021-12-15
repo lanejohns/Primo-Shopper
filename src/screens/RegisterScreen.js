@@ -33,7 +33,9 @@ function RegisterScreen({location, history}) {
         e.preventDefault()
         if(password != confirmPassword) {
             setMessage('Passwords do not match')
+            console.log('hit if condish')
         } else {          
+            console.log('hit dispatch')
             dispatch(register(name, email, password))
         }
     }
