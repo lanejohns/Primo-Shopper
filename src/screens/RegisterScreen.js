@@ -31,19 +31,26 @@ function RegisterScreen({location, history}) {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(register(name, email, password))
+        if(password != confirmPassword) {
+            setMessage('Passwords do not match')
+        } else {          
+            dispatch(register(name, email, password))
+        }
     }
 
     return (
         <div>
             <FormContainer>
                 <h1>Sign In</h1>
+                {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>}
                 {loading && <Loader />}
                 <Form onSubmit={submitHandler}>
+
                     <Form.Group controlId='name' className='p-1'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control 
+                        required
                         type='name'
                         placeholder='Enter name'
                         value={name}
@@ -55,6 +62,7 @@ function RegisterScreen({location, history}) {
                     <Form.Group controlId='email' className='p-1'>
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control 
+                        required
                         type='email'
                         placeholder='Enter Email'
                         value={email}
@@ -66,6 +74,7 @@ function RegisterScreen({location, history}) {
                     <Form.Group controlId='password' className='p-1'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
+                        required
                         type='password'
                         placeholder='Enter Password'
                         value={password}
@@ -76,7 +85,8 @@ function RegisterScreen({location, history}) {
 
                     <Form.Group controlId='passwordConfirm' className='p-1'>
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control 
+                        <Form.Control
+                        required
                         type='password'
                         placeholder='Confirm Password'
                         value={confirmPassword}
@@ -84,8 +94,20 @@ function RegisterScreen({location, history}) {
                         >
                         </Form.Control>
                     </Form.Group>
+
+                    <Button type='submit' variant='primary'>
+                            Register
+                    </Button>
                 </Form>
-                </FormContainer>
+                <Row className='py-3'>
+                <Col>
+                    Have an Account? <Link 
+                    to={redirect ? `/register?redirect=${redirect}` : '/login'}>
+                    Sign In
+                    </Link>
+                </Col>
+            </Row>
+            </FormContainer>
         </div>
     )
 }

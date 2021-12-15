@@ -61,7 +61,7 @@ function LoginScreen({location, history}) {
                 <Form.Group className='p-2'>
                     <Button type='submit' variant='primary'>
                         Sign In
-                        </Button>
+                    </Button>
                 </Form.Group>
             </Form>
 
