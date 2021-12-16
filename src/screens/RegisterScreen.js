@@ -33,9 +33,7 @@ function RegisterScreen({location, history}) {
         e.preventDefault()
         if(password != confirmPassword) {
             setMessage('Passwords do not match')
-            console.log('hit if condish')
         } else {          
-            console.log('hit dispatch')
             dispatch(register(name, email, password))
         }
     }
@@ -43,7 +41,7 @@ function RegisterScreen({location, history}) {
     return (
         <div>
             <FormContainer>
-                <h1>Sign In</h1>
+                <h1>Register</h1>
                 {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>}
                 {loading && <Loader />}
@@ -97,9 +95,11 @@ function RegisterScreen({location, history}) {
                         </Form.Control>
                     </Form.Group>
 
-                    <Button type='submit' variant='primary'>
-                            Register
-                    </Button>
+                    <Form.Group className='p-2'>
+                        <Button type='submit' variant='primary' >
+                                Register
+                        </Button>
+                    </Form.Group>
                 </Form>
                 <Row className='py-3'>
                 <Col>
