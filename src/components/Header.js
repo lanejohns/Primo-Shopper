@@ -22,7 +22,7 @@ function Header() {
                 <Container>
 
                     <LinkContainer to="/">
-                        <Navbar.Brand >CommercePro</Navbar.Brand>
+                        <Navbar.Brand>CommercePro</Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
